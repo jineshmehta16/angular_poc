@@ -1,5 +1,5 @@
 angular.module('myApp', [
-  'uiRouter'
+  'ui.router'
 ]);
 
 
