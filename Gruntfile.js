@@ -25,16 +25,41 @@ module.exports = function(grunt) {
     },
     files: [{
       src: 'app/styles/styles.scss',
-      dest: 'compiled/styles.css'
+      dest: 'compiled/styles/styles.css'
     }]
   },
     dist: {
       files: [{
         src: 'app/styles/styles.scss',
-        dest: 'dist/styles.css'
+        dest: 'dist/styles/styles.css'
       }]
   }
-}
+},
+
+copy: {
+development: {
+  files: [
+    {
+      cwd: 'app/view1',
+      src: [ '**/*.*' ],
+      dest: 'compiled/view1',
+      expand: true
+    },
+    {
+      cwd: 'app/view2',
+      src: [ '**/*.*' ],
+      dest: 'compiled/view2',
+      expand: true
+    },
+    {
+      expand: true,
+      src: ['app/*'],
+      dest: 'compiled',
+      filter: 'isFile'
+    }
+  ],
+},
+},
 
   });
 
@@ -42,11 +67,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-sass');
-  //grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
 
 // task registration
-  grunt.registerTask('default', ['sass:development' ]);
+  grunt.registerTask('default', ['sass:development', 'copy:development' ]);
   grunt.registerTask('dist', ['concat:js' , 'uglify:dist' , 'sass:dist' ]);
 
 };
