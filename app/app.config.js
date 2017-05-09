@@ -7,14 +7,14 @@ angular.module('myApp')
     $stateProvider
         .state('view1', {
             url: '/view1',
-            template: 'view1/view1.html'
+            templateUrl: '../view1/view1.html'
         })
 
         // Dashboard page to contain our goats list page
 
         .state('view2', {
             url: '/view2',
-            template: 'view2/view2.html'
+            templateUrl: '../view2/view2.html'
         })
 
     $urlRouterProvider.otherwise('/view1');

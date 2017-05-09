@@ -2,6 +2,7 @@
 
 angular.module('view-one',[]);
 
+
 angular.module('view-one')
 .component('viewOne', {
           templateUrl: 'view1/viewOne.html',
